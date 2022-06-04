@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MinimalShootingGame/Scenes/PlayScene.unity
-    guid: 3e73cfd53ad52e94b8f0ba902e02cf46
+    path: Assets/Testing/Scene/WelcomeScene.unity
+    guid: 86ff2f8511e48874c926218cf0df6265
+  - enabled: 1
+    path: Assets/Testing/Scene/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Testing/Scene/OptionsScene.unity
+    guid: 84df4e1de215363449405f5add6f344e
+  - enabled: 1
+    path: Assets/Testing/Scene/PauseMenuScene.unity
+    guid: c269104221bba2a4596baaa3dc658391
   m_configObjects: {}
