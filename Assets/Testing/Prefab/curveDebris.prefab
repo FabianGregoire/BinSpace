@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6437304184254618015}
   - component: {fileID: 5683540531443526120}
   - component: {fileID: 2396515740654558484}
-  - component: {fileID: -4156298675165504512}
+  - component: {fileID: -8777363135108033579}
   - component: {fileID: -1621124963545339176}
   m_Layer: 0
-  m_Name: straightDebris
+  m_Name: curveDebris
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a856d83e2e7d94e209dc9075ecac8312, type: 3}
-  m_Color: {r: 0.253649, g: 0.7169812, b: 0.2742445, a: 1}
+  m_Color: {r: 0.97404873, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4156298675165504512
+--- !u!114 &-8777363135108033579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,13 +122,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 443574169358250536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f5dad5daca01e48b6d3baaf71afb20, type: 3}
+  m_Script: {fileID: 11500000, guid: d271e5d3423b2514885d6c7352aae866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mapEntered: 0
   moveSpeed: 1
-  initialPosition: {x: 10, y: 5}
-  moveDirection: {x: -10, y: -3}
+  initialPosition: {x: 10, y: 0}
+  moveDirection: {x: -6, y: 0}
   rb: {fileID: -1621124963545339176}
 --- !u!50 &-1621124963545339176
 Rigidbody2D:

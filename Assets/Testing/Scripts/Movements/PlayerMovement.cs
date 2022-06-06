@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float xPlayerOffset = 9f;
     public Rigidbody2D rb;
     public CameraMovement GameCamera;
+    public AudioSource explosion;
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        screenBounds = new Vector2(-10, -5); // Set the camera screen size by hand since I can't get to retrieve it's size with a component
+        screenBounds = new Vector2(-100, -5); // Set the camera screen size by hand since I can't get to retrieve it's size with a component
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
     }
@@ -50,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveY = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(0, moveY);
-        
     }
 
     void Move()
@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            explosion.Play();
             myAnimationController.SetBool("PlayExplosion", true);
             isPlayerDead = true;
             Debug.Log("You lost");
