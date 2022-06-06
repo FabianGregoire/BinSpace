@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class StraightMovement : MonoBehaviour
+public class CurveMovement : MonoBehaviour
 {
 
     public bool mapEntered = false;
@@ -21,7 +21,7 @@ public class StraightMovement : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -37,8 +37,11 @@ public class StraightMovement : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.velocity = new Vector2 (moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+            rb.velocity = new Vector2(moveDirection.x * moveSpeed, (moveDirection.y + Mathf.Sin(Time.time * (2 * math.PI)) * 3) * moveSpeed);
         }
     }
 }
+
+
+
 
