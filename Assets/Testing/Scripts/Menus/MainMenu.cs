@@ -5,20 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu: MonoBehaviour {  
     public void PlayGame() {  
-        SceneManager.LoadSceneAsync("SampleScene");
-        Time.timeScale = 1.0f; 
+        SceneManager.LoadSceneAsync("SampleScene");  
     }
     public void GoToShop() {  
-        SceneManager.LoadSceneAsync("ShopScene");
-        Time.timeScale = 1.0f; 
+        SceneManager.LoadSceneAsync("ShopScene");  
     }
     public void QuitGame() {  
         Debug.Log("QUIT");  
         Application.Quit(); 
-        Time.timeScale = 1.0f;
     }
     public void BacktoMenu() {  
-        SceneManager.LoadSceneAsync("WelcomeScene"); 
-        Time.timeScale = 1.0f;
+        SceneManager.LoadSceneAsync("WelcomeScene");  
     }
 }

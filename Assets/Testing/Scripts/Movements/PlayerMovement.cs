@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private bool isPlayerDead = false;
     [SerializeField] private Animator myAnimationController;
-    public EndMenu endMenu;
 
     void Start()
     {
