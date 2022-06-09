@@ -11,12 +11,12 @@ public class CurveMovement : MonoBehaviour
     public Vector2 initialPosition;
     public Vector2 moveDirection;
     public Rigidbody2D rb;
+    private bool hitObject;
     /*public CameraMovement GameCamera;*/
 
     void Start()
     {
         /*rb.position = initialPosition;*/
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
     }
 
     void Update()
@@ -24,16 +24,23 @@ public class CurveMovement : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (mapEntered == true)
+        if (!hitObject && mapEntered)
         {
-            rb.constraints = RigidbodyConstraints2D.None;
             Move();
         }
     }
 
-    void Move()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            hitObject = true;
+        }
+    }
+
+    public void Move()
     {
         if (rb != null)
         {

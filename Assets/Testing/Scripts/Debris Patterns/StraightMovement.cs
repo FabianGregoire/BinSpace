@@ -16,7 +16,6 @@ public class StraightMovement : MonoBehaviour
     void Start()
     {
         /*rb.position = initialPosition;*/
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
     }
 
     void Update()
@@ -24,16 +23,7 @@ public class StraightMovement : MonoBehaviour
         
     }
 
-    void FixedUpdate()
-    {
-        if (mapEntered == true)
-        {
-            rb.constraints = RigidbodyConstraints2D.None;
-            Move();
-        }
-    }
-
-    void Move()
+    public void Move()
     {
         if (rb != null)
         {

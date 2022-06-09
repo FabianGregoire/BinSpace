@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GrabAsteroid grabAsteroidClass;
     public float moveSpeed;
     public float xPlayerOffset = 9f;
     public Rigidbody2D rb;
@@ -15,12 +16,19 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private bool isPlayerDead = false;
     [SerializeField] private Animator myAnimationController;
+    public GameObject aspirateur;
+    public GameObject grab;
+    private bool enterKeyPressed = false;
+    private bool grabKeyPressed = false;
 
     void Start()
     {
         screenBounds = new Vector2(-100, -5); // Set the camera screen size by hand since I can't get to retrieve it's size with a component
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
+        aspirateur.SetActive(false);
+        grab.SetActive(false);
+        grabAsteroidClass = FindObjectOfType<GrabAsteroid>();
     }
 
     // Update is called once per frame
@@ -28,6 +36,24 @@ public class PlayerMovement : MonoBehaviour
     {
         ProcessInputs();
         //Porcessing Inputs
+        if (!isPlayerDead && enterKeyPressed)
+        {
+            aspirateur.SetActive(true);
+        }
+        else
+        {
+            aspirateur.SetActive(false);
+        }
+        if (!isPlayerDead && grabKeyPressed)
+        {
+            grab.SetActive(true);
+            grabAsteroidClass.stopGrab = false;
+        }
+        else
+        {
+            grab.SetActive(false);
+            grabAsteroidClass.stopGrab = true;
+        }
     }
 
     void LateUpdate()
@@ -51,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveY = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(0, moveY);
+        enterKeyPressed = Input.GetKey(KeyCode.Space);
+        grabKeyPressed = Input.GetKey(KeyCode.D);
     }
 
     void Move()
@@ -64,15 +92,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && !isPlayerDead)
         {
             explosion.Play();
             myAnimationController.SetBool("PlayExplosion", true);
             isPlayerDead = true;
-            Debug.Log("You lost");
+            Debug.Log("YOU LOST !");
+        }else if(collision.gameObject.tag == "Finish")
+        {
+            Debug.Log("YOU WON !");
         }
     }
 }
-
-//StraightMovement.Instance.Move();
-//StraightMovement.instance.initialPosition = 2, 5;

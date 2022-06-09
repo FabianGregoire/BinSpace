@@ -15,20 +15,11 @@ public class AsteroidMovement : MonoBehaviour
 
     private void Start()
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
-    void FixedUpdate()
+    public void Move()
     {
-        if (mapEntered)
-        {
-            rb.constraints = RigidbodyConstraints2D.None;
-            Move();
-        }
-    }
-    void Move()
-    {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime * rotationDirection);
     }
 }

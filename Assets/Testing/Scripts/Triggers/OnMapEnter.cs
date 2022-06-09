@@ -34,6 +34,7 @@ public class OnMapEnter : MonoBehaviour
                     if (m.gameObject == collision.gameObject)
                     {
                         m.mapEntered = true;
+                        m.Move();
                     }
                 }
             }else if(collision.gameObject.GetComponent<AsteroidMovement>() != null)
@@ -43,6 +44,7 @@ public class OnMapEnter : MonoBehaviour
                     if (m.gameObject == collision.gameObject)
                     {
                         m.mapEntered = true;
+                        m.Move();
                     }
                 }
             }else if (collision.gameObject.GetComponent<CurveMovement>() != null)
@@ -52,6 +54,7 @@ public class OnMapEnter : MonoBehaviour
                     if (m.gameObject == collision.gameObject)
                     {
                         m.mapEntered = true;
+                        m.Move();
                     }
                 }
             }
