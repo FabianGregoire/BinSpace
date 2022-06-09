@@ -497,6 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabPosition: {fileID: 824979314}
+  stopGrab: 0
 --- !u!1 &4168630429514150387
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24bb3b37fc704d040bb9287d3abda16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabAsteroidClass: {fileID: 1932885906}
   moveSpeed: 5
   xPlayerOffset: 4
   rb: {fileID: 4168630429514150384}
@@ -629,6 +631,8 @@ MonoBehaviour:
   explosion: {fileID: 6923191548904319417}
   myAnimationController: {fileID: 681835951}
   aspirateur: {fileID: 1436511832}
+  grab: {fileID: 1932885904}
+  grabCollider: {fileID: 1932885907}
 --- !u!61 &1716387469
 BoxCollider2D:
   m_ObjectHideFlags: 0

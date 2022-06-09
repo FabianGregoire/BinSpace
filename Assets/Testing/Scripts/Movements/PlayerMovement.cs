@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator myAnimationController;
     public GameObject aspirateur;
     public GameObject grab;
+    public BoxCollider2D grabCollider;
     private bool enterKeyPressed = false;
     private bool grabKeyPressed = false;
 
@@ -27,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
         aspirateur.SetActive(false);
-        grab.SetActive(false);
-        grabAsteroidClass = FindObjectOfType<GrabAsteroid>();
     }
 
     // Update is called once per frame
@@ -46,13 +45,16 @@ public class PlayerMovement : MonoBehaviour
         }
         if (!isPlayerDead && grabKeyPressed)
         {
-            grab.SetActive(true);
+            grabCollider.enabled = true;
             grabAsteroidClass.stopGrab = false;
         }
-        else
+        else if(!grabKeyPressed)
         {
-            grab.SetActive(false);
-            grabAsteroidClass.stopGrab = true;
+            grabCollider.enabled = false;
+            if (!grabAsteroidClass.stopGrab)
+            {
+                grabAsteroidClass.stopGrab = true;
+            }
         }
     }
 

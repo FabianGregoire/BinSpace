@@ -6,6 +6,8 @@ public class GrabAsteroid : MonoBehaviour
 {
     public Transform grabPosition;
     public bool stopGrab;
+    private bool objectIsGrabbed = false;
+    private GameObject grabbedObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,29 +17,38 @@ public class GrabAsteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stopGrab);
+        if(grabbedObject != null && stopGrab)
+        {
+            releaseObject(grabbedObject);
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (stopGrab)
+        if (!stopGrab && !objectIsGrabbed)        
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                collision.gameObject.transform.position = new Vector2(transform.position.x + 2, transform.position.y);
-                Debug.Log("Ungrab now");
-            }
-        }
-        else
-        {
-            if (collision.gameObject.tag == "Enemy")
-            {
-                collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                collision.gameObject.transform.position = grabPosition.position;
-                collision.gameObject.transform.SetParent(transform);
+                grabbedObject = collision.gameObject;
+                grabbedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                grabbedObject.transform.position = grabPosition.position;
+                grabbedObject.transform.SetParent(transform);
+                objectIsGrabbed = true;
                 Debug.Log("Grab now");
             }
         }
     }
+
+    public void releaseObject(GameObject objet)
+    {
+        if (objectIsGrabbed)
+        {
+            objet.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            objet.transform.parent = transform.root;
+            objet.transform.position = new Vector2(transform.position.x + 10, transform.position.y);
+            objectIsGrabbed = false;
+            Debug.Log("Ungrab now");
+        }
+    }
+
 }
