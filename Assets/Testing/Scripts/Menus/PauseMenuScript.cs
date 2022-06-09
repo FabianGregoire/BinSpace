@@ -8,6 +8,7 @@ public class PauseMenuScript : MonoBehaviour
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _resumeButton;
+    bool is_on_pause = false;
 
     public void StartGame() {  
         SceneManager.LoadScene(1); 
@@ -26,11 +27,25 @@ public class PauseMenuScript : MonoBehaviour
         Time.timeScale = 0f;
         _resumeButton.SetActive(true);
         _pauseButton.SetActive(false);
+        is_on_pause = true;
     }
 
     public void ResumeButton() {  
         Time.timeScale = 1.0f;
         _resumeButton.SetActive(false);
         _pauseButton.SetActive(true);
+        is_on_pause = false;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            if (is_on_pause == false){
+                PauseButton();
+            }
+            else{
+                ResumeButton();
+            }
+        }
     }
 }

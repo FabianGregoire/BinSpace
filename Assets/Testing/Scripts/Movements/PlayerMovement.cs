@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D grabCollider;
     private bool enterKeyPressed = false;
     private bool grabKeyPressed = false;
+    [SerializeField] private GameObject _endMenu;
+    [SerializeField] private GameObject _victoryText;
+    [SerializeField] private GameObject _looseText;
 
     void Start()
     {
@@ -99,9 +102,16 @@ public class PlayerMovement : MonoBehaviour
             explosion.Play();
             myAnimationController.SetBool("PlayExplosion", true);
             isPlayerDead = true;
+            Time.timeScale = 0f;
+            _endMenu.SetActive(true);
+            _victoryText.SetActive(false);
+            _looseText.SetActive(true);
             Debug.Log("YOU LOST !");
         }else if(collision.gameObject.tag == "Finish")
         {
+            _endMenu.SetActive(true);
+            _victoryText.SetActive(true);
+            _looseText.SetActive(false);
             Debug.Log("YOU WON !");
         }
     }

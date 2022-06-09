@@ -633,6 +633,9 @@ MonoBehaviour:
   aspirateur: {fileID: 1436511832}
   grab: {fileID: 1932885904}
   grabCollider: {fileID: 1932885907}
+  _endMenu: {fileID: 0}
+  _victoryText: {fileID: 0}
+  _looseText: {fileID: 0}
 --- !u!61 &1716387469
 BoxCollider2D:
   m_ObjectHideFlags: 0
