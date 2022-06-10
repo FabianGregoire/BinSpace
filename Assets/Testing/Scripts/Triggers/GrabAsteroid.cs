@@ -34,8 +34,16 @@ public class GrabAsteroid : MonoBehaviour
                 grabbedObject.transform.position = grabPosition.position;
                 grabbedObject.transform.SetParent(transform);
                 objectIsGrabbed = true;
-                Debug.Log("Grab now");
             }
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            grabbedObject = collision.gameObject;
+            grabbedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
     }
 
@@ -48,7 +56,6 @@ public class GrabAsteroid : MonoBehaviour
             objet.transform.position = new Vector2(grabPosition.position.x, grabPosition.position.y);
             objet.GetComponent<Rigidbody2D>().velocity = new Vector2(objet.GetComponent<Rigidbody2D>().velocity.x * -2, objet.GetComponent<Rigidbody2D>().velocity.y * -2);
             objectIsGrabbed = false;
-            Debug.Log("Ungrab now");
         }
     }
 
