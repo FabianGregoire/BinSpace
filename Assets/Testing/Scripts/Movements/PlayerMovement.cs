@@ -102,13 +102,14 @@ public class PlayerMovement : MonoBehaviour
             explosion.Play();
             myAnimationController.SetBool("PlayExplosion", true);
             isPlayerDead = true;
-            Time.timeScale = 0f;
+            /*Time.timeScale = 0f;*/
             _endMenu.SetActive(true);
             _victoryText.SetActive(false);
             _looseText.SetActive(true);
             Debug.Log("YOU LOST !");
         }else if(collision.gameObject.tag == "Finish")
         {
+            isPlayerDead = true;
             _endMenu.SetActive(true);
             _victoryText.SetActive(true);
             _looseText.SetActive(false);

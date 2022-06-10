@@ -45,7 +45,8 @@ public class GrabAsteroid : MonoBehaviour
         {
             objet.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             objet.transform.parent = transform.root;
-            objet.transform.position = new Vector2(transform.position.x + 10, transform.position.y);
+            objet.transform.position = new Vector2(grabPosition.position.x, grabPosition.position.y);
+            objet.GetComponent<Rigidbody2D>().velocity = new Vector2(objet.GetComponent<Rigidbody2D>().velocity.x * -2, objet.GetComponent<Rigidbody2D>().velocity.y * -2);
             objectIsGrabbed = false;
             Debug.Log("Ungrab now");
         }
