@@ -315,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shop
+  m_text: Keys
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1403608bdbf4e4e41adae12d09220e0f, type: 2}
   m_sharedMaterial: {fileID: 1372088019850662715, guid: 1403608bdbf4e4e41adae12d09220e0f,
@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 1293727974}
   - component: {fileID: 1293727973}
   m_Layer: 5
-  m_Name: Shop button
+  m_Name: Option Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
